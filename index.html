@@ -53,6 +53,8 @@ body{display:grid;place-items:center;overflow:hidden;color:var(--brown);font-fam
 .col.on .pic{left:var(--x);top:var(--y);opacity:1;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}
 .col.settled .pic{transition-delay:0s;transition-duration:.4s}
 .col.on .pic:hover{transform:translate(-50%,-50%) rotate(0) scale(1.14);z-index:3}
+.col.settled .pic{animation:sway 5s ease-in-out infinite;animation-delay:calc(var(--i)*-.9s)}
+@keyframes sway{50%{translate:0 -7px;rotate:1.5deg}}
 @media(max-width:600px){:root{--lw:68vw}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
 </style></head>
@@ -89,7 +91,7 @@ L.push(`<div class="ln s sg" style="--i:${i++}">— ${C.from} ♥</div>`);
 $('#lt').innerHTML=L.join('');
 const mob=matchMedia('(max-width:700px)').matches;
 /* slots: x%, y%, width(vw), rotation(deg) — alternating left/right */
-const SL=mob?[[22,9,24,-8],[78,8,24,8],[22,92,24,7],[78,93,24,-7]]
+const SL=mob?[[14,10,22,-9],[85,11,22,8],[50,6,18,5],[15,91,22,7],[84,90,22,-8],[50,95,18,-6]]
 :[[10,24,15,-9],[90,26,15,8],[16,68,16,6],[84,70,16,-6],[26,10,12,6],[74,88,13,-7]];
 const em=['💕','🌹','🌸','🧸','💌','🎀'],col=$('#col');
 C.photos.slice(0,SL.length).forEach((src,k)=>{const [x,y,w,r]=SL[k],d=document.createElement('div');d.className='pic';
